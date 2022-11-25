@@ -6,6 +6,11 @@ param (
 )
 
 
+#check to ensure powershell-yaml is installed
+if($null -eq (Get-Command ConvertTo-Yaml -errorAction SilentlyContinue)) {
+    Write-Error "Module powershell-yaml is missing.  Please install it 'Import-Module powershell-yaml'"
+}
+
 if (!(Test-Path -Path ($PathToFiles))) {
     write-host  "Error:  PAth to files doesnt exist!" -ForegroundColor Red
 }
